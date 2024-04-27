@@ -1,0 +1,37 @@
+[tool.ruff]
+exclude = [
+    "env",
+    ".direnv",
+    ".git",
+    ".vscode",
+    "__pypackages__",
+    "*/migrations/*",
+]
+
+line-length = 88
+indent-width = 4
+
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["ALL"]
+ignore = [
+    "ANN",      # Type hints related, let mypy handle these
+    "EM101",    # Exception must not use a string literal, assign to variable first
+    "EM102",    # Exception must not use an f-string literal, assign to variable first
+    "PTH",      # User Pathlib stuff over os.*. Should migrate to Pathlib at some point
+    "SIM108",   # Use ternary operator ... Ternary is harmful for readability in some cases
+    "TRY003",   # Avoid specifying long messages outside the exception class
+    "D10",      # Missing docstring
+    "A003",     # Class attribute `id` is shadowing a python builtin
+    "D203",     # one-blank-line-before-class
+    "D213",     # multi-line-summary-second-line
+    "S101",     # Use of `assert` detected
+    "RUF012",   # Mutable class attributes should be annotated with `typing.ClassVar`
+    "PT009",    # Allow to use dajngo unittest asserts
+]
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+docstring-code-format = false
