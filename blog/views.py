@@ -6,6 +6,7 @@ from . import models, serializers
 
 
 class PostListView(ListAPIView):
+    http_method_names = ["options", "get"]
     serializer_class = serializers.PostSerializer
     pagination_class = PageNumberPagination
 
@@ -22,6 +23,7 @@ class PostListView(ListAPIView):
 
 
 class PostDetailView(RetrieveAPIView):
+    http_method_names = ["options", "get"]
     queryset = models.Post.objects.filter(
         status=models.PostStatus.PUBLISHED,
     )
